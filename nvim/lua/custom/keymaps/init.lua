@@ -36,3 +36,6 @@ end, { desc = '[C]ode [F]ormat', noremap = true, silent = true })
 -- Keymap for code actions
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction" })
 
+-- Epitech headers
+local epitechHeaders = require("custom.keymaps.epitech-headers")
+vim.keymap.set("n", "<leader>ce", epitechHeaders.insertHeader, {desc = "[C]ode [E]pitech Headers"})
