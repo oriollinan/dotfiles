@@ -69,6 +69,7 @@ return {
                     end, { 'i', 's' }),
                 },
                 sources = cmp.config.sources({
+                    { name = "copilot" },
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' },
                     { name = 'path' },
@@ -88,7 +89,7 @@ return {
                         cmp.config.compare.length,
                         cmp.config.compare.order,
                     },
-                }
+                },
             }
             -- Additional LSP configuration for clangd
             local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())

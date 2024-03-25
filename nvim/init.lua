@@ -45,6 +45,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 require('custom.keymaps.init')
+require('custom.configuration')
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
