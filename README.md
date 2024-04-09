@@ -19,7 +19,7 @@ This repository contains my personal configurations for `nvim` (Neovim) and `tmu
 1. **Clone the Repository**: Start by cloning this repository to your local machine. Consider cloning it to a `dotfiles` directory in your home folder:
 
     ```bash
-    git clone https://github.com/oriollinan/dotfiles.git ~/dotfiles
+    git clone https://github.com/oriollinan/.dotfiles.git ~/dotfiles
     ```
 
 2. **Link Neovim and tmux Configurations**:
