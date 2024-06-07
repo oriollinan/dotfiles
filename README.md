@@ -22,15 +22,10 @@ This repository contains my personal configurations for `nvim` (Neovim) and `tmu
     git clone https://github.com/oriollinan/.dotfiles.git ~/dotfiles
     ```
 
-2. **Link Neovim and tmux Configurations**:
-    - For `tmux`, create a symbolic link for `tmux.conf` from the cloned repository to your home directory:
-        ```bash
-        ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
-        ```
-    - For `nvim`, create a symbolic link for the `nvim` directory from the cloned repository to your Neovim configuration directory in `.config`:
-        ```bash
-        ln -s ~/dotfiles/nvim ~/.config/nvim
-        ```
+2. **Run the Setup script**:
+    ```bash
+    bash setup.sh
+    ```
 
 ### Post-installation
 
@@ -38,7 +33,7 @@ After creating the symbolic links, you might need to restart your terminal or so
 
 For `nvim`, you can source the configuration file by running `:source %` within Neovim.
 
-For `tmux`, you can source the configuration file by running `tmux source-file ~/.tmux.conf`.
+For `tmux`, you can source the configuration file by running `tmux source-file ~/tmux/.tmux.conf`.
 
 ## Customization
 
