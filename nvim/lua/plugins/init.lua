@@ -22,6 +22,8 @@ return {
         "html-lsp",
         "css-lsp",
         "prettier",
+        "clangd",
+        "pyright",
       },
     },
   },
@@ -32,6 +34,7 @@ return {
         "vim",
         "lua",
         "vimdoc",
+        "python",
 
         -- web dev
         "html",

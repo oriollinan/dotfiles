@@ -11,4 +11,7 @@ map("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "window up" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+-- epitech headers
+local epitechHeaders = require("custom.epitech-headers")
+vim.keymap.set("n","<leader>ce",epitechHeaders.insertHeader, {desc = "Epitech Headers"})
+
