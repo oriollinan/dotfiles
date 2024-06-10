@@ -24,6 +24,7 @@ return {
         "prettier",
         "clangd",
         "pyright",
+        "rust-analyzer"
       },
     },
   },
@@ -34,6 +35,8 @@ return {
         "vim",
         "lua",
         "vimdoc",
+        "markdown",
+        "markdown_inline",
         "python",
 
         -- web dev
@@ -46,6 +49,7 @@ return {
         -- low level
         "c",
         "cpp",
+        "rust",
       },
     },
   },
