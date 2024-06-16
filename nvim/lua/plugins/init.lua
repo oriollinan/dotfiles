@@ -24,7 +24,9 @@ return {
         "prettier",
         "clangd",
         "pyright",
-        "rust-analyzer"
+        "rust-analyzer",
+        "typescript-language-server",
+        "ts-standard",
       },
     },
   },
@@ -67,6 +69,6 @@ return {
       { "<C-k>", "<Cmd>TmuxNavigateUp<CR>" },
       { "<C-l>", "<Cmd>TmuxNavigateRight<CR>" },
     },
-    lazy = false
-  }
+    lazy = false,
+  },
 }
