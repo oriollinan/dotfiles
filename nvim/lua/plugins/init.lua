@@ -40,15 +40,11 @@ return {
         "markdown",
         "markdown_inline",
         "python",
-
-        -- web dev
         "html",
         "css",
         "javascript",
         "typescript",
         "tsx",
-
-        -- low level
         "c",
         "cpp",
         "rust",
@@ -62,12 +58,6 @@ return {
       "TmuxNavigateDown",
       "TmuxNavigateUp",
       "TmuxNavigateRight",
-    },
-    keys = {
-      { "<C-h>", "<Cmd>TmuxNavigateLeft<CR>" },
-      { "<C-j>", "<Cmd>TmuxNavigateDown<CR>" },
-      { "<C-k>", "<Cmd>TmuxNavigateUp<CR>" },
-      { "<C-l>", "<Cmd>TmuxNavigateRight<CR>" },
     },
     lazy = false,
   },

@@ -11,6 +11,6 @@ map("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "window down" })
 map("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "window up" })
 
 -- epitech headers
-local epitechHeaders = require("custom.epitech-headers")
-map("n", "<leader>ce", epitechHeaders.insertHeader, { desc = "Epitech Headers" })
+local epitechHeaders = require "custom.epitech-headers"
+map("n", "<leader>ce", epitechHeaders.insertHeader, { desc = "epitech headers" })
 
