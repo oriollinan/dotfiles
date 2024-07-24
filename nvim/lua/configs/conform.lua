@@ -5,6 +5,8 @@ local options = {
     html = { "prettier" },
     typescript = { "prettier" },
     typescriptreact = { "prettier" },
+    python = { "black" },
+    yaml = { "prettier" },
   },
   -- format_on_save = {
   --   -- These options will be passed to conform.format()

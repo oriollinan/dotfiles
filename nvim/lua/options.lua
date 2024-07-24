@@ -14,3 +14,12 @@ vim.cmd [[match ExtraWhitespace /\s\+$/]]
 o.colorcolumn = "80"
 vim.cmd [[highlight ColorColumn ctermbg=grey guibg=grey]]
 
+-- Relative numbers
+vim.wo.relativenumber = true
+
+-- Show git ignored
+-- require("nvim-tree").setup {
+--   filters = {
+--     git_ignored = false,
+--   },
+-- }
