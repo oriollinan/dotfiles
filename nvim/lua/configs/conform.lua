@@ -5,6 +5,8 @@ local options = {
     html = { "prettier" },
     typescript = { "prettier" },
     typescriptreact = { "prettier" },
+    javascript = { "prettier" },
+    javascriptreact = { "prettier" },
     python = { "black" },
     yaml = { "prettier" },
   },
