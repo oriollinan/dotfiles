@@ -5,6 +5,7 @@ local o = vim.o
 -- Tab indents 4
 o.softtabstop = 4
 o.shiftwidth = 4
+o.tabstop = 4
 
 -- Highlight trailing spaces
 vim.cmd [[highlight ExtraWhitespace ctermbg=red guibg=red]]

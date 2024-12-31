@@ -38,3 +38,5 @@ require "configs.comments"
 vim.schedule(function()
   require "mappings"
 end)
+
+require "configs.tree-sitter"

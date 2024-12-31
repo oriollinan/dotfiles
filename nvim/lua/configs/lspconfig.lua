@@ -6,7 +6,21 @@ local capabilities = require("nvchad.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 -- local util = require "util/lspconfig"
 
-local servers = { "html", "cssls", "clangd", "pyright", "rust_analyzer", "ts_ls", "tailwindcss", "gopls", "sqls" }
+local servers = {
+  "html",
+  "cssls",
+  "clangd",
+  "pyright",
+  "rust_analyzer",
+  "ts_ls",
+  "tailwindcss",
+  "gopls",
+  "sqls",
+  "yamlls",
+  "eslint",
+  "gdscript",
+  "groovyls",
+}
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -16,3 +30,7 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+lspconfig["hls"].setup {
+  filetypes = { "haskell", "lhaskell", "cabal" },
+}
