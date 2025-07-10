@@ -118,6 +118,9 @@ automatically-unhide-macos-hidden-apps = false
     alt-equal = 'resize smart +50'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+    alt-c = 'workspace c'
+    alt-b = 'workspace b'
+    alt-m = 'workspace m'
     alt-4 = 'workspace 4'
     alt-5 = 'workspace 5'
     alt-6 = 'workspace 6'
@@ -126,6 +129,9 @@ automatically-unhide-macos-hidden-apps = false
     alt-9 = 'workspace 9'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+    alt-shift-c = 'move-node-to-workspace c'
+    alt-shift-b = 'move-node-to-workspace b'
+    alt-shift-m = 'move-node-to-workspace m'
     alt-shift-4 = 'move-node-to-workspace 4'
     alt-shift-5 = 'move-node-to-workspace 5'
     alt-shift-6 = 'move-node-to-workspace 6'
