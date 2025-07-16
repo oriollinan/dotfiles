@@ -755,6 +755,7 @@ require('lazy').setup({
         opts = {},
       },
       'folke/lazydev.nvim',
+      'fang2hou/blink-copilot',
     },
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
@@ -805,12 +806,20 @@ require('lazy').setup({
               { 'source_name' },
             },
             treesitter = { 'lsp' },
+            components = {
+              label = {
+                width = {
+                  min = 25,
+                  max = 25,
+                },
+              },
+            },
           },
         },
       },
 
       sources = {
-        default = { 'lsp', 'buffer', 'snippets', 'path' },
+        default = { 'lsp', 'buffer', 'snippets', 'path', 'copilot' },
         per_filetype = {
           sql = { 'dadbod', 'snippets', 'buffer' },
           lua = { inherit_defaults = true, 'lazydev' },
@@ -818,6 +827,12 @@ require('lazy').setup({
         providers = {
           dadbod = { module = 'vim_dadbod_completion.blink', min_keyword_length = 0 },
           lazydev = { module = 'lazydev.integrations.blink' },
+          copilot = {
+            name = 'COPILOT',
+            module = 'blink-copilot',
+            async = true,
+          },
+
           lsp = {
             async = true,
           },
