@@ -12,7 +12,10 @@ rm -rf $CONFIG_DIR/tmux
 rm -f $HOME/.tmux.conf
 
 # remove aerospace config file
-rm -f $CONFIG_DIR/.aerospace.toml
+rm -f $CONFIG_DIR/aerospace
+
+# remove ghostty config
+rm -rf $CONFIG_DIR/ghostty
 
 # link nvim config files
 ln -s $CURRENT_DIR/nvim $CONFIG_DIR/nvim
@@ -24,6 +27,9 @@ ln -s $CURRENT_DIR/tmux/.tmux.conf $HOME
 
 # link aerospace config file
 ln -s $CURRENT_DIR/aerospace $CONFIG_DIR/aerospace
+
+# link ghostty config
+ln -s $CURRENT_DIR/ghostty $CONFIG_DIR/ghostty
 
 # source the config files
 SESSION=session

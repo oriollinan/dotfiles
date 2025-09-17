@@ -617,6 +617,7 @@ require('lazy').setup({
         tailwindcss = {},
         yamlls = {},
         jsonls = {},
+        coq_lsp = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -874,6 +875,10 @@ require('lazy').setup({
           comments = false,
           strings = false,
         },
+        overrides = {},
+        palette_overrides = {
+          dark0 = '#000000',
+        },
       }
       vim.cmd.colorscheme 'gruvbox'
     end,
@@ -998,3 +1003,9 @@ require('lazy').setup({
 })
 
 require 'custom.mapping'
+
+vim.filetype.add {
+  extension = {
+    v = 'coq',
+  },
+}
