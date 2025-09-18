@@ -3,5 +3,7 @@ font-family = 0xProto Nerd Font
 keybind = super+bracket_right=increase_font_size:1
 title = " "
 macos-titlebar-proxy-icon = "hidden"
+mouse-hide-while-typing = true
 custom-shader = "~/.config/ghostty/shaders/starfield.glsl"
+custom-shader = "~/.config/ghostty/shaders/cursor_blaze.glsl"
 custom-shader-animation = "always"

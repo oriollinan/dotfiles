@@ -1,6 +1,6 @@
-[submodule "ghostty/shaders"]
-	path = ghostty/shaders
-	url = git@github.com:hackr-sh/ghostty-shaders.git
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = git@github.com:tmux-plugins/tpm.git
+[submodule "ghostty/shaders/hackr-sh"]
+	path = ghostty/shaders/hackr-sh
+	url = git@github.com:hackr-sh/ghostty-shaders.git
