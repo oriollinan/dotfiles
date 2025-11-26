@@ -1,8 +1,9 @@
-theme = Gruvbox Dark Hard
+theme = Gruvbox Dark
 font-family = 0xProto Nerd Font
 keybind = super+bracket_right=increase_font_size:1
 title = " "
 macos-titlebar-proxy-icon = "hidden"
 mouse-hide-while-typing = true
-custom-shader = "~/.config/ghostty/shaders/starfield-slowed.glsl"
-custom-shader = "~/.config/ghostty/shaders/hackr-sh/cursor_blaze.glsl"
+background-opacity = 0.6
+background-opacity-cells = true
+background-blur = true

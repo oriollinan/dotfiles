@@ -374,6 +374,15 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      vim.keymap.set('n', '<leader>sa', function()
+        builtin.find_files {
+          hidden = true,
+          no_ignore = true,
+          no_ignore_parent = true,
+        }
+      end, { desc = '[S]earch [A]ll Files' })
+      vim.keymap.set('n', '<leader>so', builtin.oldfiles, { desc = '[S]earch [O]ld files' })
     end,
   },
 
@@ -618,6 +627,7 @@ require('lazy').setup({
         yamlls = {},
         jsonls = {},
         coq_lsp = {},
+        bashls = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -875,10 +885,6 @@ require('lazy').setup({
           comments = false,
           strings = false,
         },
-        overrides = {},
-        palette_overrides = {
-          dark0 = '#000000',
-        },
       }
       vim.cmd.colorscheme 'gruvbox'
     end,
@@ -1003,9 +1009,3 @@ require('lazy').setup({
 })
 
 require 'custom.mapping'
-
-vim.filetype.add {
-  extension = {
-    v = 'coq',
-  },
-}
