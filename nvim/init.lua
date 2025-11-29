@@ -628,6 +628,7 @@ require('lazy').setup({
         jsonls = {},
         coq_lsp = {},
         bashls = {},
+        texlab = {},
       }
 
       -- Ensure the servers and tools above are installed
