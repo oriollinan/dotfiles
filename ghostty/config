@@ -1,9 +1,5 @@
-theme = Gruvbox Dark
-font-family = 0xProto Nerd Font
-keybind = super+bracket_right=increase_font_size:1
-title = " "
-macos-titlebar-proxy-icon = "hidden"
+theme = Gruvbox Dark Hard
+font-family = JetbrainsMono Nerd Font
 mouse-hide-while-typing = true
-background-opacity = 0.6
-background-opacity-cells = true
-background-blur = true
+macos-titlebar-style = "hidden"
+confirm-close-surface = false

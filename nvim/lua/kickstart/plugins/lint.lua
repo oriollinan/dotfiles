@@ -6,12 +6,12 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        markdown = { 'markdownlint' },
         javascript = { 'eslint_d' },
         javascriptreact = { 'eslint_d' },
         typescript = { 'eslint_d' },
         typescriptreact = { 'eslint_d' },
         json = { 'jsonlint' },
+        python = { 'ruff' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
@@ -55,9 +55,17 @@ return {
           -- Only run the linter in buffers that you can modify in order to
           -- avoid superfluous noise, notably within the handy LSP pop-ups that
           -- describe the hovered symbol using Markdown.
-          if vim.bo.modifiable then
-            lint.try_lint()
+          if not vim.bo.modifiable then
+            return
           end
+
+          -- NOTE: this could cause issues with some lsps and linters
+          local client = vim.lsp.get_clients({ bufnr = 0 })[1]
+          if not client or not client.root_dir then
+            return
+          end
+
+          lint.try_lint(nil, { cwd = client.root_dir })
         end,
       })
     end,

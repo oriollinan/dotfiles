@@ -5,6 +5,18 @@ return {
   init = function()
     -- VimTeX configuration goes here, e.g.
     vim.g.vimtex_view_method = 'skim'
-    vim.cmd 'syntax enable'
+    vim.g.vimtex_view_skim_sync = 1
+    vim.g.vimtex_view_skim_activate = 1
+    vim.g.vimtex_compiler_latexmk = {
+      callback = 1,
+      out_dir = 'out',
+      options = {
+        '-shell-escape',
+        '-verbose',
+        '-file-line-error',
+        '-synctex=1',
+        '-interaction=nonstopmode',
+      },
+    }
   end,
 }

@@ -617,18 +617,48 @@ require('lazy').setup({
               completion = {
                 callSnippet = 'Replace',
               },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = {
+                globals = { 'vim' },
+                -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+                -- disable = { 'missing-fields' },
+              },
+              workspace = {
+                checkThirdParty = false,
+                library = {
+                  vim.env.VIMRUNTIME,
+                },
+              },
             },
           },
         },
-        eslint = {},
+        eslint = {
+          workingDirectory = { mode = 'auto' },
+        },
         tailwindcss = {},
         yamlls = {},
         jsonls = {},
         coq_lsp = {},
         bashls = {},
         texlab = {},
+        jdtls = {
+          -- TODO: why does `jdtls` need this
+          cmd = { 'jdtls' },
+        },
+        ruff = {},
+      }
+
+      -- Linters
+      local linters = {
+        'eslint_d',
+        'jsonlint',
+      }
+
+      -- Formatters
+      local formatters = {
+        'stylua',
+        'sleek',
+        'prettierd',
+        'ruff',
       }
 
       -- Ensure the servers and tools above are installed
@@ -645,33 +675,19 @@ require('lazy').setup({
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        -- Formatters
-        'stylua',
-        'sleek',
-        'black',
-        'prettierd',
-        -- Linters
-        'eslint_d',
-        'markdownlint',
-        'jsonlint',
-      })
+      vim.list_extend(ensure_installed, linters)
+      vim.list_extend(ensure_installed, formatters)
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      require('mason-lspconfig').setup { ensure_installed = {} }
 
-      require('mason-lspconfig').setup {
-        ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-        automatic_installation = false,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
-      }
+      -- NOTE: configure lsp
+      for server_name, config in pairs(servers) do
+        config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, config.capabilities or {})
+        vim.lsp.config(server_name, config)
+      end
+
+      -- NOTE: hls is installed without mason
+      vim.lsp.enable 'hls'
     end,
   },
 
@@ -718,8 +734,6 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        python = { 'black' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         html = { 'prettierd' },
@@ -731,6 +745,8 @@ require('lazy').setup({
         sql = { 'sleek' },
         yaml = { 'prettierd' },
         json = { 'prettierd' },
+        markdown = { 'prettierd' },
+        python = { 'ruff_format' },
       },
     },
   },
@@ -767,7 +783,6 @@ require('lazy').setup({
         opts = {},
       },
       'folke/lazydev.nvim',
-      'fang2hou/blink-copilot',
     },
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
@@ -831,31 +846,23 @@ require('lazy').setup({
       },
 
       sources = {
-        default = { 'lsp', 'buffer', 'snippets', 'path', 'copilot' },
+        default = { 'lsp', 'snippets', 'path', 'buffer' },
         per_filetype = {
           sql = { 'dadbod', 'snippets', 'buffer' },
           lua = { inherit_defaults = true, 'lazydev' },
+          -- TODO: find a better way to do this
+          markdown = { inherit_defaults = true, 'markview' },
         },
         providers = {
+          lsp = {
+            score_offset = 5,
+          },
+          snippets = {},
+          path = {},
+          buffer = {},
+
           dadbod = { module = 'vim_dadbod_completion.blink', min_keyword_length = 0 },
           lazydev = { module = 'lazydev.integrations.blink' },
-          copilot = {
-            name = 'COPILOT',
-            module = 'blink-copilot',
-            async = true,
-          },
-
-          lsp = {
-            async = true,
-          },
-          -- TODO: find a better way to handle this
-          snippets = {
-            min_keyword_length = 1,
-          },
-          buffer = {
-            min_keyword_length = 1,
-          },
-          path = {},
         },
       },
 
@@ -876,21 +883,19 @@ require('lazy').setup({
       signature = { enabled = true },
     },
   },
-
   {
     'ellisonleao/gruvbox.nvim',
     priority = 1000,
     config = function()
       require('gruvbox').setup {
         italic = {
-          comments = false,
           strings = false,
         },
+        contrast = 'hard',
       }
       vim.cmd.colorscheme 'gruvbox'
     end,
   },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -950,6 +955,7 @@ require('lazy').setup({
         'vim',
         'vimdoc',
         'json',
+        'latex',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
@@ -958,6 +964,9 @@ require('lazy').setup({
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
         --  If you are experiencing weird indenting issues, add the language to
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+        disable = {
+          'latex',
+        },
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
@@ -974,7 +983,6 @@ require('lazy').setup({
   require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -1010,3 +1018,4 @@ require('lazy').setup({
 })
 
 require 'custom.mapping'
+require 'custom.config'

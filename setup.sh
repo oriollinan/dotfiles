@@ -28,7 +28,7 @@ ln -s $CURRENT_DIR/tmux/.tmux.conf $HOME
 # link aerospace config file
 ln -s $CURRENT_DIR/aerospace $CONFIG_DIR/aerospace
 
-# link ghostty config
+# link ghostty config
 ln -s $CURRENT_DIR/ghostty $CONFIG_DIR/ghostty
 
 # source the config files

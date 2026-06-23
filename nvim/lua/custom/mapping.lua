@@ -5,5 +5,4 @@ end
 
 map('i', '<C-C>', '<ESC>', { desc = 'Exit insert mode' })
 map('n', '<C-C>', '<ESC>', { desc = 'Cancel command' })
-
-map('n', '<Leader>bd', '<cmd>bdelete<CR>', { desc = '[B]uffer [D]elete' })
+map('n', '<Leader>e', ':Ex<CR>', { desc = 'Open file [E]xplorer' })
